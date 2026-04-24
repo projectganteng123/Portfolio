@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Frames — Photography Portfolio</title>
+  <meta name="description" content="Urban photography portfolio — cityscapes, trees, and the warmth of city life." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-logo">Urban Frames</div>
+    <div class="nav-links">
+      <a href="#gallery" onclick="scrollToSection('gallery')">Gallery</a>
+      <a href="#about" onclick="scrollToSection('about')">About</a>
+      <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+    </div>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#gallery" onclick="scrollToSection('gallery'); toggleMenu()">Gallery</a>
+    <a href="#about" onclick="scrollToSection('about'); toggleMenu()">About</a>
+    <a href="#contact" onclick="scrollToSection('contact'); toggleMenu()">Contact</a>
+  </div>
+
+  <!-- HERO SLIDESHOW -->
+  <section class="hero" id="hero">
+    <div class="slides" id="slides">
+
+      <div class="slide active" data-index="0">
+        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1600&q=80&auto=format&fit=crop')"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="caption-tag">Jakarta, 2024</span>
+          <h2>Golden Hour Overpass</h2>
+        </div>
+      </div>
+
+      <div class="slide" data-index="1">
+        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600&q=80&auto=format&fit=crop')"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="caption-tag">Urban Study</span>
+          <h2>The City Breathes</h2>
+        </div>
+      </div>
+
+      <div class="slide" data-index="2">
+        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80&auto=format&fit=crop')"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="caption-tag">Streetscape</span>
+          <h2>Roots &amp; Concrete</h2>
+        </div>
+      </div>
+
+      <div class="slide" data-index="3">
+        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1600&q=80&auto=format&fit=crop')"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="caption-tag">Cityscape</span>
+          <h2>Skyline at Dusk</h2>
+        </div>
+      </div>
+
+      <div class="slide" data-index="4">
+        <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1600&q=80&auto=format&fit=crop')"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-caption">
+          <span class="caption-tag">Street Life</span>
+          <h2>Between Shadows</h2>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hero Text -->
+    <div class="hero-intro">
+      <p class="hero-eyebrow">Photography Portfolio</p>
+      <h1 class="hero-title">Seeing the<br /><em>City's Soul</em></h1>
+      <p class="hero-sub">Urban landscapes, warm tones, quiet moments</p>
+    </div>
+
+    <!-- Slide Controls -->
+    <div class="slide-controls">
+      <button class="ctrl-btn" id="prevBtn" aria-label="Previous" onclick="changeSlide(-1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="slide-dots" id="slideDots"></div>
+      <button class="ctrl-btn" id="nextBtn" aria-label="Next" onclick="changeSlide(1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+      <span id="currentNum">01</span>
+      <span class="counter-div"></span>
+      <span id="totalNum">05</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <p class="section-eyebrow">Selected Works</p>
+      <h2 class="section-title">The Collection</h2>
+      <p class="section-desc">A series of urban studies — where trees meet towers, and warm light softens the hard edges of city life.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="filterGallery(this, 'all')">All</button>
+      <button class="filter-btn" data-filter="cityscape" onclick="filterGallery(this, 'cityscape')">Cityscape</button>
+      <button class="filter-btn" data-filter="street" onclick="filterGallery(this, 'street')">Street</button>
+      <button class="filter-btn" data-filter="nature" onclick="filterGallery(this, 'nature')">Urban Nature</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item tall" data-cat="cityscape">
+        <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&q=80&auto=format&fit=crop" alt="City towers at golden hour" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Cityscape</span>
+          <h3>Towers in Gold</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="street">
+        <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=800&q=80&auto=format&fit=crop" alt="Street scene warm tones" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Street</span>
+          <h3>Afternoon Walk</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="nature">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80&auto=format&fit=crop" alt="Trees in urban setting" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Urban Nature</span>
+          <h3>Green Corridor</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item wide" data-cat="cityscape">
+        <img src="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=1200&q=80&auto=format&fit=crop" alt="Panoramic city view" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Cityscape</span>
+          <h3>The Horizon Line</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="street">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=800&q=80&auto=format&fit=crop" alt="Street photography" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Street</span>
+          <h3>City Rhythm</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item tall" data-cat="nature">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&auto=format&fit=crop" alt="Tree silhouette city" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Urban Nature</span>
+          <h3>Standing Tall</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="cityscape">
+        <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=800&q=80&auto=format&fit=crop" alt="Building details" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Cityscape</span>
+          <h3>Geometry of Glass</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="street">
+        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80&auto=format&fit=crop" alt="Street cafe urban" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Street</span>
+          <h3>Corner Light</h3>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="nature">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80&auto=format&fit=crop" alt="Park in city" loading="lazy" />
+        <div class="item-overlay">
+          <span class="item-cat">Urban Nature</span>
+          <h3>Pocket of Calm</h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop&crop=face" alt="Photographer portrait" />
+        <div class="about-image-tag">Est. 2019</div>
+      </div>
+      <div class="about-text">
+        <p class="section-eyebrow">The Photographer</p>
+        <h2 class="about-name">Alex Wardana</h2>
+        <p class="about-quote">"The city is always alive — you just need to slow down and look."</p>
+        <p class="about-bio">
+          Berbasis di Jakarta, Alex menangkap keindahan tersembunyi dari kehidupan perkotaan — di mana pohon-pohon tua berdiri di antara gedung-gedung modern, dan cahaya sore mengubah beton menjadi kanvas berwarna emas.
+        </p>
+        <p class="about-bio">
+          Setiap foto adalah undangan untuk melihat kota dengan cara yang berbeda — lebih lambat, lebih dalam, lebih hangat.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Years</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">200+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Cities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2 class="contact-title">Let's Work<br /><em>Together</em></h2>
+      <p class="contact-sub">For collaboration, prints, or just a conversation about photography.</p>
+      <div class="contact-links">
+        <a href="mailto:alex@urbanframes.id" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          alex@urbanframes.id
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-btn contact-btn--outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          @urbanframes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Urban Frames</span>
+      <span class="footer-copy">© 2024 Alex Wardana. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
